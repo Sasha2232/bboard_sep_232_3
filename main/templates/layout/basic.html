@@ -35,23 +35,21 @@ data-bs-toggle="dropdown" href="#">Профиль</a>
 <div class="dropdown-menu">
 <a class="dropdown-item" href="{% url 'main:profile' %}">Мои
 объявления</a>
-<a class="dropdown-item" href="#">Изменить
+<a class="dropdown-item" href="{% url 'main:profile_edit' %}">Изменить
 личные данные</a>
-<a class="dropdown-item" href="#">Изменить
+<a class="dropdown-item" href="{% url 'main:password_edit' %}">Изменить
 пароль</a>
-5
 <hr class="dropdown-divider">
-<form class="px-3">
-{% csrf_token %}
-{% bootstrap_button 'Выйти'
- button_class='btn-danger' %}
+<form class="px-3" method="post" action="{% url 'main:logout' %}">
+ {% csrf_token %}
+ {% bootstrap_button 'Выйти' button_class='btn-danger' %}
 </form>
 <hr class="dropdown-divider">
 <a class="dropdown-item" href="#">Удалить</a>
 </div>
 </div>
  {% else %}
-<a class="nav-link" href="#">Регистрация</a>
+<a class="nav-link" href="{% url 'main:register' %}">Регистрация</a>
 <a class="nav-link" href="{% url 'main:login' %}">Вход</a>
  {% endif %}
 </div>
